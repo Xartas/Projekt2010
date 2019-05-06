@@ -18,7 +18,8 @@ public class Main {
 
         int wybor = scanner.nextInt();
         if (wybor == 1){
-            Pliki.wczytajDane();
+            Pliki.wczytajDaneDostawcow();
+            Pliki.wczytajDaneMagazynuP();
         }
  //       else if (wybor == 2){
          //  nazwaPliku = "slownik.csv";

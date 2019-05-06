@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Pliki {
 
-    public static void wczytajDane() {
+    public static void wczytajDaneDostawcow() {
 
         // --- Wczytanie do listy dostawców ---
         List<Dostawca> listaDostawcow = new ArrayList<>();
@@ -29,12 +29,46 @@ public class Pliki {
             System.out.println("Brak pliku \"dostawcy.csv\"!");
         }
 
-        for (Dostawca dostawca:listaDostawcow) {
-            System.out.printf("'%-36S'", dostawca.getNazwa());
-            System.out.printf("'%-36S'", dostawca.getMiejscowosc());
-            System.out.printf("'%-36S'", dostawca.getUlica());
-            System.out.printf("'%-5S'", dostawca.getNrKlienta());
+//        for (Dostawca dostawca:listaDostawcow) {
+//            System.out.printf("'%-36S'", dostawca.getNazwa());
+//            System.out.printf("'%-36S'", dostawca.getMiejscowosc());
+//            System.out.printf("'%-36S'", dostawca.getUlica());
+//            System.out.printf("'%-5S'", dostawca.getNrKlienta());
+//            System.out.println();
+//        }
+    }
+
+    public static void wczytajDaneMagazynuP() {
+        // --- Wczytanie do listy MagazynuP ---
+        List<MagazynP> listaMagazynP = new ArrayList<>();
+        File plikDane = new File("magazynp.csv");
+        try {
+            Scanner skaner = new Scanner(plikDane);
+            while (skaner.hasNextLine()) {
+                String bufor = skaner.nextLine();
+                String[] buforTable = bufor.split(";");
+                String nrKarty = buforTable[0];
+                String dataD = buforTable[1];
+                String masa = buforTable[2];
+                String jednostka = buforTable[3];
+                String firma = buforTable[4];
+                String nrKlienta = buforTable[5];
+                String nrOdpadu = buforTable[6];
+                String nrMagazynowy = buforTable[7];
+                MagazynP nowyMagazynP = new MagazynP(nrKarty, dataD, masa, jednostka, firma, nrMagazynowy, nrOdpadu, nrKlienta);
+                listaMagazynP.add(nowyMagazynP);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Brak pliku \"magazynp.csv\"!");
+        }
+
+        for (MagazynP element: listaMagazynP) {
+            System.out.printf("'%-36S'", element.getNrKarty());
+            System.out.printf("'%-36S'", element.getFirma());
+            System.out.printf("'%-36S'", element.getJednostka());
+            System.out.printf("'%-5S'", element.getNrMagazynowy());
             System.out.println();
         }
     }
+
 }
