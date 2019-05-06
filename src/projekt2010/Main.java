@@ -20,9 +20,9 @@ public class Main {
         if (wybor == 1){
             Pliki.wczytajDaneDostawcow();
             Pliki.wczytajDaneMagazynuP();
+            Pliki.wczytajDaneMagazynuW();
+            Pliki.wczytajSlownik();
         }
- //       else if (wybor == 2){
-         //  nazwaPliku = "slownik.csv";
-  //      }
+
     }
 }

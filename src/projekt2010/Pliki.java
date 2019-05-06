@@ -62,12 +62,60 @@ public class Pliki {
             System.out.println("Brak pliku \"magazynp.csv\"!");
         }
 
-        for (MagazynP element: listaMagazynP) {
-            System.out.printf("'%-36S'", element.getNrKarty());
-            System.out.printf("'%-36S'", element.getFirma());
-            System.out.printf("'%-36S'", element.getJednostka());
-            System.out.printf("'%-5S'", element.getNrMagazynowy());
-            System.out.println();
+//        for (MagazynP element: listaMagazynP) {
+//            System.out.printf("'%-36S'", element.getNrKarty());
+//            System.out.printf("'%-36S'", element.getFirma());
+//            System.out.printf("'%-36S'", element.getJednostka());
+//            System.out.printf("'%-5S'", element.getNrMagazynowy());
+//            System.out.println();
+//        }
+    }
+
+    public static void wczytajDaneMagazynuW() {
+        // --- Wczytanie do listy MagazynuW ---
+        List<MagazynW> listaMagazynW = new ArrayList<>();
+        File plikDane = new File("magazynw.csv");
+        try {
+            Scanner skaner = new Scanner(plikDane);
+            while (skaner.hasNextLine()) {
+                String bufor = skaner.nextLine();
+                String[] buforTable = bufor.split(";");
+                String nrKarty = buforTable[0];
+                String dataW = buforTable[1];
+                String masa = buforTable[2];
+                String jednostka = buforTable[3];
+                String firma = buforTable[4];
+                String nrKlienta = buforTable[5];
+                String nrOdpadu = buforTable[6];
+                String nrMagazynowy = buforTable[7];
+                MagazynW nowyMagazynW = new MagazynW(nrKarty, dataW, masa, jednostka, firma, nrKlienta, nrOdpadu, nrMagazynowy);
+                listaMagazynW.add(nowyMagazynW);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Brak pliku \"magazynp.csv\"!");
+        }
+    }
+
+    public static void wczytajSlownik() {
+        // --- Wczytanie do listy Słownika ---
+        List<Slownik> listaSlownik = new ArrayList<>();
+        File plikDane = new File("slownik.csv");
+        try {
+            Scanner skaner = new Scanner(plikDane);
+            while (skaner.hasNextLine()) {
+                String bufor = skaner.nextLine();
+                String[] buforTable = bufor.split(";");
+                String grupa = buforTable[0];
+                String podgrupa = buforTable[1];
+                String rodzaj = buforTable[2];
+                String typ = buforTable[3];
+                String opis = buforTable[4];
+                String nr_odpadu = buforTable[5];
+                Slownik nowySlownik = new Slownik(grupa, podgrupa, rodzaj, typ, opis, nr_odpadu);
+                listaSlownik.add(nowySlownik);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Brak pliku \"magazynp.csv\"!");
         }
     }
 
