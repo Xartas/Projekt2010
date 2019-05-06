@@ -11,25 +11,25 @@ public class Pliki {
     public static void wczytajDane() {
 
         // --- Wczytanie do listy dostawców ---
-        List<Dostawcy> listaDostawcow = new ArrayList<>();
+        List<Dostawca> listaDostawcow = new ArrayList<>();
         File plikDane = new File("dostawcy.csv");
         try{
             Scanner skaner = new Scanner(plikDane);
             while (skaner.hasNextLine()){
                 String bufor = skaner.nextLine();
                 String[] buforTable = bufor.split(";");
-                Dostawcy nowyDostawca = new Dostawcy();
-                nowyDostawca.setNazwa(buforTable[0]);
-                nowyDostawca.setMiejscowosc(buforTable[1]);
-                nowyDostawca.setUlica(buforTable[2]);
-                nowyDostawca.setNrKlienta(buforTable[3]);
+                String dostawcaNazwa = buforTable[0];
+                String dostawcaMiejscowosc = buforTable[1];
+                String dostawcaUlica = buforTable[2];
+                String dostawcaNrKlienta = buforTable[3];
+                Dostawca nowyDostawca = new Dostawca(dostawcaNazwa, dostawcaMiejscowosc, dostawcaUlica, dostawcaNrKlienta);
                 listaDostawcow.add(nowyDostawca);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Brak pliku \"dostawcy.csv\"!");
         }
 
-        for (Dostawcy dostawca:listaDostawcow) {
+        for (Dostawca dostawca:listaDostawcow) {
             System.out.printf("'%-36S'", dostawca.getNazwa());
             System.out.printf("'%-36S'", dostawca.getMiejscowosc());
             System.out.printf("'%-36S'", dostawca.getUlica());

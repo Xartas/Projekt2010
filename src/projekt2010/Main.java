@@ -20,8 +20,8 @@ public class Main {
         if (wybor == 1){
             Pliki.wczytajDane();
         }
-        else if (wybor == 2){
-            nazwaPliku = "slownik.csv";
-        }
+ //       else if (wybor == 2){
+         //  nazwaPliku = "slownik.csv";
+  //      }
     }
 }
